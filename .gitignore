@@ -1,0 +1,9 @@
+vendor
+composer.lock
+.runtime
+*.log
+/.idea
+*.cache
+*.lock
+/.vscode
+*.pid
