@@ -68,6 +68,7 @@ class TDengine
         {
             return PoolManager::getResource($poolName)->getInstance();
         }
+        // @phpstan-ignore-next-line
         elseif (App::getBean('TDengine')->connections[$poolName]['extension'] ?? false)
         {
             $config = TDEngineManager::getClientConfig($poolName);
