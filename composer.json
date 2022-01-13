@@ -15,6 +15,9 @@
         "imiphp/imi-swoole": "~2.0.0",
         "yurunsoft/ide-helper": "~1.0"
     },
+    "suggest": {
+        "ext-tdengine": "TDengine 扩展 https://github.com/Yurunsoft/php-tdengine"
+    },
     "autoload": {
         "psr-4": {
             "Imi\\TDengine\\": "src/"
