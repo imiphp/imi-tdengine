@@ -32,7 +32,7 @@ jobs:
             :xdebug
             mbstring, json, sockets,
             swoole-swoole/swoole-src@v${{ matrix.swoole }},
-            csv-https://github.com/Yurunsoft/php-tdengine@${{ matrix.tdengine-extension }},
+            csv-https://github.com/Yurunsoft/php-tdengine@v${{ matrix.tdengine-extension }},
         env:
           TDENGINE_CONFIGURE_OPTS: >
             --enable-swoole
