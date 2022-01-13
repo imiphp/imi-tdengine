@@ -27,7 +27,11 @@ class ImiClientHandler implements IClientHandler
      */
     public function query(string $sql, ?string $clientName = null): IQueryResult
     {
-        if (null !== $clientName && ($this->haveSwoole ??= \extension_loaded('swoole')) && Coroutine::getuid() > -1 && PoolManager::exists($clientName))
+        if (null === $clientName)
+        {
+            $clientName = TDengine::getDefaultPoolName();
+        }
+        if (($this->haveSwoole ??= \extension_loaded('swoole')) && Coroutine::getuid() > -1 && PoolManager::exists($clientName))
         {
             $clientHandler = ($this->clientHandlers[0] ??= new ExtensionPoolClientHandler());
         }

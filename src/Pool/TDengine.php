@@ -44,17 +44,23 @@ class TDengine
     /**
      * Get 默认连接池名.
      */
-    public function getDefaultPoolName(): ?string
+    public static function getDefaultPoolName(): ?string
     {
-        return $this->defaultPoolName;
+        /** @var self $tdengine */
+        $tdengine = App::getBean('TDengine');
+
+        return $tdengine->defaultPoolName;
     }
 
     /**
      * Get 连接配置.
      */
-    public function getConnections(): array
+    public static function getConnections(): array
     {
-        return $this->connections;
+        /** @var self $tdengine */
+        $tdengine = App::getBean('TDengine');
+
+        return $tdengine->connections;
     }
 
     /**
@@ -64,12 +70,17 @@ class TDengine
      */
     public static function getConnection(?string $poolName = null)
     {
-        if (null !== $poolName && PoolManager::exists($poolName))
+        /** @var self $tdengine */
+        $tdengine = App::getBean('TDengine');
+        if (null === $poolName)
+        {
+            $poolName = $tdengine->defaultPoolName;
+        }
+        if (PoolManager::exists($poolName))
         {
             return PoolManager::getResource($poolName)->getInstance();
         }
-        // @phpstan-ignore-next-line
-        elseif (App::getBean('TDengine')->connections[$poolName]['extension'] ?? false)
+        elseif ($tdengine->connections[$poolName]['extension'] ?? false)
         {
             $config = TDEngineManager::getClientConfig($poolName);
             if (!$config)
