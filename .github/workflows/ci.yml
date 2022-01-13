@@ -29,7 +29,7 @@ jobs:
         run: echo "::set-output name=path::$(brew --prefix openssl@1.1)"
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@verbose
         with:
           php-version: ${{ matrix.php }}
           tools: pecl
@@ -39,6 +39,7 @@ jobs:
             swoole-swoole/swoole-src@v${{ matrix.swoole }},
             Yurunsoft/php-tdengine@v${{ matrix.tdengine-extension }},
         env:
+          fail-fast: true
           SWOOLE_CONFIGURE_OPTS: >
             --enable-openssl
             --with-openssl-dir=${{ steps.opecssl-dir.outputs.path }}
