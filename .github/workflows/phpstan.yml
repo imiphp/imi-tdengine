@@ -11,12 +11,17 @@ jobs:
       matrix:
         php: ['8.0']
         swoole: ['4.8.5']
+        tdengine: ['2.3.6.0']
+        tdengine-extension: [0.0.3]
 
     env:
       TDENGINE_VERSION: ${{ matrix.tdengine }}
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Build TDengine
+        run: sudo -E bash .github/script/build-tdengine.sh
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -27,6 +32,10 @@ jobs:
             :xdebug
             mbstring, json, sockets,
             swoole-swoole/swoole-src@v${{ matrix.swoole }},
+            csv-https://github.com/Yurunsoft/php-tdengine@${{ matrix.tdengine-extension }},
+        env:
+          TDENGINE_CONFIGURE_OPTS: >
+            --enable-swoole
 
       - name: Prepare
         run: composer update
