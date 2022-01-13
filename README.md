@@ -7,7 +7,7 @@
 </p>
 
 [![Latest Version](https://img.shields.io/packagist/v/imiphp/imi-tdengine.svg)](https://packagist.org/packages/imiphp/imi-tdengine)
-![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/imiphp/imi-tdengine/ci/dev)
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/imiphp/imi-tdengine/ci/master)
 [![Php Version](https://img.shields.io/badge/php-%3E=7.4-brightgreen.svg)](https://secure.php.net/)
 [![Swoole Version](https://img.shields.io/badge/swoole-%3E=4.7.0-brightgreen.svg)](https://github.com/swoole/swoole-src)
 [![imi Doc](https://img.shields.io/badge/docs-passing-green.svg)](https://doc.imiphp.com/v2.0/)
