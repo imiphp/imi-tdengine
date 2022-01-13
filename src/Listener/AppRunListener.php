@@ -22,6 +22,5 @@ class AppRunListener implements IEventListener
     public function handle(EventParam $e): void
     {
         TDEngineOrm::setClientHandler(new ImiClientHandler());
-        App::getBean('TDengine');
     }
 }
