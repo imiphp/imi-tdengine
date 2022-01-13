@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Imi\TDengine\ClientHandler;
 
-use Imi\App;
 use Imi\Pool\PoolManager;
 use Imi\TDengine\Pool\TDengine;
 use Swoole\Coroutine;
@@ -37,9 +36,7 @@ class ImiClientHandler implements IClientHandler
         }
         else
         {
-            /** @var TDengine $tdengine */
-            $tdengine = App::getBean('TDengine');
-            if (($tdengine->getConnections()[$clientName ?? $tdengine->getDefaultPoolName()]['extension'] ?? false) && ($this->haveExtensionTDengine ??= class_exists(\TDengine\Connection::class, false)))
+            if ((TDengine::getConnections()[$clientName]['extension'] ?? false) && ($this->haveExtensionTDengine ??= class_exists(\TDengine\Connection::class, false)))
             {
                 $clientHandler = ($this->clientHandlers[1] ??= new \Yurun\TDEngine\Orm\ClientHandler\Extension\Handler());
             }
