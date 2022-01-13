@@ -37,7 +37,7 @@ jobs:
             :xdebug
             openssl, mbstring, json, sockets,
             swoole-swoole/swoole-src@v${{ matrix.swoole }},
-            csv-https://github.com/Yurunsoft/php-tdengine@v${{ matrix.tdengine-extension }},
+            tdengine-https://github.com/Yurunsoft/php-tdengine@v${{ matrix.tdengine-extension }},
         env:
           fail-fast: true
           SWOOLE_CONFIGURE_OPTS: >
