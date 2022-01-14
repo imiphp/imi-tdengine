@@ -21,7 +21,7 @@ class ExtensionPoolClientHandler implements IClientHandler
     {
         if (null !== $clientName && PoolManager::exists($clientName))
         {
-            return new QueryResult(PoolManager::getResource($clientName)->getInstance()->query($sql));
+            return new QueryResult(PoolManager::getRequestContextResource($clientName)->getInstance()->query($sql));
         }
         else
         {

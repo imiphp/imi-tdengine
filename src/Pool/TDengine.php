@@ -78,7 +78,7 @@ class TDengine
         }
         if (PoolManager::exists($poolName))
         {
-            return PoolManager::getResource($poolName)->getInstance();
+            return PoolManager::getRequestContextResource($poolName)->getInstance();
         }
         elseif ($tdengine->connections[$poolName]['extension'] ?? false)
         {
