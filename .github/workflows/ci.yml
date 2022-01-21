@@ -11,9 +11,9 @@ jobs:
       fail-fast: false
       matrix:
         php: [7.4, '8.0', 8.1]
-        swoole: ['4.8.5']
-        tdengine: ['2.3.6.0']
-        tdengine-extension: [0.0.3]
+        swoole: ['4.8.6']
+        tdengine: ['2.4.0.3']
+        tdengine-extension: ['1.0.0']
 
     env:
       TDENGINE_VERSION: ${{ matrix.tdengine }}
