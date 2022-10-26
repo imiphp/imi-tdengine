@@ -9,8 +9,15 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Test">
-            <directory>Tests</directory>
+        <testsuite name="restful">
+            <file>Tests/ConnectorTest.php</file>
+        </testsuite>
+        <testsuite name="extension">
+            <file>Tests/ExtensionTest.php</file>
+            <file>Tests/ExtensionPoolTest.php</file>
+        </testsuite>
+        <testsuite name="model">
+            <file>Tests/ModelTest.php</file>
         </testsuite>
     </testsuites>
     <extensions>

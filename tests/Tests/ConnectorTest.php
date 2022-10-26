@@ -51,12 +51,22 @@ class ConnectorTest extends TestCase
     {
         $client = $this->getClient();
         $result = $client->sql('select * from db_test.tb order by ts desc limit 1');
-        $this->assertEquals([
+        $resultData = $result->getData();
+        $this->assertTrue(\in_array($resultData, [
             [
-                'ts'          => gmdate('Y-m-d H:i:s', (int) ($data['time'] / 1000)) . '.000',
-                'temperature' => 36,
-                'humidity'    => 44.5,
+                [
+                    'ts'          => gmdate('Y-m-d H:i:s', (int) ($data['time'] / 1000)) . '.000',
+                    'temperature' => 36,
+                    'humidity'    => 44.5,
+                ],
             ],
-        ], $result->getData());
+            [
+                [
+                    'ts'          => gmdate('Y-m-d\TH:i:s.000\Z', (int) ($data['time'] / 1000)),
+                    'temperature' => 36,
+                    'humidity'    => 44.5,
+                ],
+            ],
+        ]), json_encode($resultData, \JSON_PRETTY_PRINT));
     }
 }
