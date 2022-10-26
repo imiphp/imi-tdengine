@@ -11,8 +11,8 @@
         "phpunit/phpunit": ">=9",
         "phpstan/phpstan": "^1.0.2",
         "friendsofphp/php-cs-fixer": "^3.0.2",
-        "imiphp/imi": "~2.0.0",
-        "imiphp/imi-swoole": "~2.0.0",
+        "imiphp/imi": "2.1.x-dev",
+        "imiphp/imi-swoole": "2.1.x-dev",
         "yurunsoft/ide-helper": "~1.0"
     },
     "suggest": {
@@ -36,6 +36,11 @@
             "list": [
                 "tdengine"
             ]
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "yurunsoft/ide-helper": true
         }
     }
 }

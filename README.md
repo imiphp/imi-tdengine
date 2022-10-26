@@ -2,7 +2,7 @@
 
 <p align="center">
     <a href="https://www.imiphp.com" target="_blank">
-        <img src="https://cdn.jsdelivr.net/gh/imiphp/imi@2.0/res/logo.png" alt="imi" />
+        <img src="https://cdn.jsdelivr.net/gh/imiphp/imi@2.1/res/logo.png" alt="imi" />
     </a>
 </p>
 
@@ -10,8 +10,8 @@
 ![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/imiphp/imi-tdengine/ci/master)
 [![Php Version](https://img.shields.io/badge/php-%3E=7.4-brightgreen.svg)](https://secure.php.net/)
 [![Swoole Version](https://img.shields.io/badge/swoole-%3E=4.7.0-brightgreen.svg)](https://github.com/swoole/swoole-src)
-[![imi Doc](https://img.shields.io/badge/docs-passing-green.svg)](https://doc.imiphp.com/v2.0/)
-[![imi License](https://img.shields.io/badge/license-MulanPSL%201.0-brightgreen.svg)](https://github.com/imiphp/imi-tdengine/blob/2.0/LICENSE)
+[![imi Doc](https://img.shields.io/badge/docs-passing-green.svg)](https://doc.imiphp.com/v2.1/)
+[![imi License](https://img.shields.io/badge/license-MulanPSL%202.0-brightgreen.svg)](https://github.com/imiphp/imi-tdengine/blob/2.1/LICENSE)
 
 ## 介绍
 
@@ -220,6 +220,6 @@ imi 遵循 木兰宽松许可证(Mulan PSL v2) 开源协议发布，并提供免
 
 ## 捐赠
 
-![捐赠](https://cdn.jsdelivr.net/gh/imiphp/imi@2.0/res/pay.png)
+![捐赠](https://cdn.jsdelivr.net/gh/imiphp/imi@2.1/res/pay.png)
 
 开源不求盈利，多少都是心意，生活不易，随缘随缘……
