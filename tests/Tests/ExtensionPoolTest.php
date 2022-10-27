@@ -11,6 +11,11 @@ class ExtensionPoolTest extends ExtensionTest
 {
     protected function getClient(): Connection
     {
+        if (!\extension_loaded('tdengine'))
+        {
+            $this->markTestSkipped('no extension tdengine');
+        }
+
         return TDengine::getConnection('extension_pool');
     }
 }
