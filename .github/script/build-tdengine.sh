@@ -2,7 +2,7 @@
 wget -qO - http://repos.taosdata.com/tdengine.key | sudo apt-key add - && \
 echo "deb [arch=amd64] http://repos.taosdata.com/tdengine-stable stable main" | sudo tee /etc/apt/sources.list.d/tdengine-stable.list && \
 apt update && \
-apt install -y tdengine=${TDENGINE_VERSION} && \
+apt install -y -q tdengine=${TDENGINE_VERSION} && \
 systemctl start taosd
 systemctl start taosadapter
 
