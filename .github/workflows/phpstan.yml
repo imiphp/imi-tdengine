@@ -11,7 +11,7 @@ jobs:
       matrix:
         php: ['8.0']
         swoole: ['4.8.5']
-        tdengine: ['2.3.6.0']
+        tdengine: ['2.4.0.30']
         tdengine-extension: [0.0.3]
 
     env:
