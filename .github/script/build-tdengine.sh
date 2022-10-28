@@ -1,10 +1,8 @@
 #!/bin/bash
-wget -qO - http://repos.taosdata.com/tdengine.key | sudo apt-key add - && \
-echo "deb [arch=amd64] http://repos.taosdata.com/tdengine-stable stable main" | sudo tee /etc/apt/sources.list.d/tdengine-stable.list && \
-apt update && \
-apt install -y -q tdengine=${TDENGINE_VERSION} && \
-systemctl start taosd
-systemctl start taosadapter
-
+cd /tmp && \
+git clone --recurse -b ver-${TDENGINE_VERSION} --depth=1 https://github.com/taosdata/TDengine.git && \
+cd TDengine && \
+mkdir debug && cd debug && cmake .. -DBUILD_JDBC=false -DBUILD_HTTP=false && make -j && make install && \
+systemctl start taosd taosadapter
 sleep 5
 taos -s "create database db_test"

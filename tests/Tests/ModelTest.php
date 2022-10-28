@@ -51,13 +51,23 @@ class ModelTest extends TestCase
 
         $client = TDengine::getConnection('restful');
         $result = $client->sql('select * from db_test.device_insert order by time desc limit 1');
-        $this->assertEquals([
+        $resultData = $result->getData();
+        $this->assertTrue(\in_array($resultData, [
             [
-                'time'             => gmdate('Y-m-d H:i:s', (int) ($time / 1000)) . '.' . substr((string) $time, -3, 3),
-                'voltage'          => 1.23,
-                'electric_current' => 4.56,
+                [
+                    'time'             => gmdate('Y-m-d H:i:s', (int) ($time / 1000)) . '.' . substr((string) $time, -3, 3),
+                    'voltage'          => 1.23,
+                    'electric_current' => 4.56,
+                ],
             ],
-        ], $result->getData());
+            [
+                [
+                    'time'             => gmdate('Y-m-d\TH:i:s', (int) ($time / 1000)) . '.' . substr((string) $time, -3, 3) . 'Z',
+                    'voltage'          => 1.23,
+                    'electric_current' => 4.56,
+                ],
+            ],
+        ]), json_encode($resultData, \JSON_PRETTY_PRINT));
     }
 
     public function testBatchInsert(): void
@@ -76,7 +86,7 @@ class ModelTest extends TestCase
         $time = microtime(true);
         $time2 = (int) ($time * 1000);
         $records[] = new DeviceLogModel([
-            'time'            => date('Y-m-d H:i:s.', (int) $time) . substr((string) $time2, -3, 3),
+            'time'            => gmdate('Y-m-d\TH:i:s.', (int) $time) . substr((string) $time2, -3, 3) . 'Z',
             'deviceId'        => '00000002',
             'voltage'         => 1.1,
             'electricCurrent' => 2.2,
@@ -85,21 +95,41 @@ class ModelTest extends TestCase
 
         $client = TDengine::getConnection('restful');
         $result = $client->sql('select * from db_test.device_batch_insert_1 order by time desc limit 1');
-        $this->assertEquals([
+        $resultData = $result->getData();
+        $this->assertTrue(\in_array($resultData, [
             [
-                'time'             => gmdate('Y-m-d H:i:s', (int) ($time1 / 1000)) . '.' . substr((string) $time1, -3, 3),
-                'voltage'          => 1.23,
-                'electric_current' => 4.56,
+                [
+                    'time'             => gmdate('Y-m-d H:i:s', (int) ($time1 / 1000)) . '.' . substr((string) $time1, -3, 3),
+                    'voltage'          => 1.23,
+                    'electric_current' => 4.56,
+                ],
             ],
-        ], $result->getData());
+            [
+                [
+                    'time'             => gmdate('Y-m-d\TH:i:s', (int) ($time1 / 1000)) . '.' . substr((string) $time1, -3, 3) . 'Z',
+                    'voltage'          => 1.23,
+                    'electric_current' => 4.56,
+                ],
+            ],
+        ]), json_encode($resultData, \JSON_PRETTY_PRINT));
         $result = $client->sql('select * from db_test.device_batch_insert_2 order by time desc limit 1');
-        $this->assertEquals([
+        $resultData = $result->getData();
+        $this->assertTrue(\in_array($resultData, [
             [
-                'time'             => date('Y-m-d H:i:s', (int) ($time2 / 1000)) . '.' . substr((string) $time2, -3, 3),
-                'voltage'          => 1.1,
-                'electric_current' => 2.2,
+                [
+                    'time'             => gmdate('Y-m-d H:i:s', (int) ($time2 / 1000)) . '.' . substr((string) $time2, -3, 3),
+                    'voltage'          => 1.1,
+                    'electric_current' => 2.2,
+                ],
             ],
-        ], $result->getData());
+            [
+                [
+                    'time'             => gmdate('Y-m-d\TH:i:s', (int) ($time2 / 1000)) . '.' . substr((string) $time2, -3, 3) . 'Z',
+                    'voltage'          => 1.1,
+                    'electric_current' => 2.2,
+                ],
+            ],
+        ]), json_encode($resultData, \JSON_PRETTY_PRINT));
 
         $this->assertTrue(true);
     }
